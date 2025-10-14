@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <div>
+        <h1>Notes App</h1>
+        <p>Tulis dan kelola catatanmu dengan mudah</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Section: Form Tambah Catatan -->
+    <section class="form-section">
+      <div class="form-card">
+        <h2>Tambah Catatan Baru</h2>
+        <p>Isi judul dan isi catatanmu di bawah ini:</p>
+        <note-form></note-form>
+      </div>
+    </section>
+
+    <!-- Section: Daftar Catatan -->
+    <section class="list-section">
+      <div class="list-card">
+        <div class="list-header">
+          <div class="list-title">
+            <h2>Daftar Catatan</h2>
+            <p>Catatan yang kamu buat akan muncul di bawah ini:</p>
+          </div>
+
+          <div class="list-actions">
+            <button class="archive-btn"><i class="fa-solid fa-box-archive"></i> Catatan Arsip</button>
+          </div>
+        </div>
+
+        <hr class="list-divider">
+        <note-list></note-list>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>© 2025 Notes App — Dibuat oleh Ryan Gosling (Rizqi Zia)</p>
+  </footer>
+
+  <loading-indicator></loading-indicator>
+  <custom-alert></custom-alert>
+</body>
+
+</html>
