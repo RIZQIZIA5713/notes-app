@@ -6,7 +6,7 @@ import './components/custom-alert.js'
 import './components/loading-indicator.js';
 
 function main() {
-  const API_URL = 'https://notes-api.dicoding.dev/v2';
+  const API_URL = 'https://noteapi-zia.onrender.com';
 
   document.addEventListener('DOMContentLoaded', () => {
     const loading = document.querySelector('loading-indicator');
@@ -92,7 +92,7 @@ function main() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(note),
         });
-        
+
         customAlert.showAlert('Catatan berhasil ditambahkan!');
         getNotes();
       } catch (error) {
@@ -106,9 +106,8 @@ function main() {
     const removeNote = async (noteId) => {
       showLoading();
       try {
-        const response = await fetch(`${API_URL}/notes/${noteId}`, { method: 'DELETE' });
-        const responseJson = await response.json();
-
+        await fetch(`${API_URL}/notes/${noteId}`, { method: 'DELETE' });
+        
         if (isArchivedView) {
           getArchivedNotes();
         } else {
@@ -116,7 +115,7 @@ function main() {
         }
 
       } catch (error) {
-        alert(error);
+        customAlert.showAlert('Gagal menghapus catatan.')
       } finally {
         hideLoading();
       }
@@ -127,14 +126,14 @@ function main() {
       showLoading();
       try {
         const url = `${API_URL}/notes/${noteId}/${isArchived ? 'unarchive' : 'archive'}`;
-        const response = await fetch(url, { method: 'POST' });
-        const responseJson = await response.json();
-        alert(responseJson.message);
+        await fetch(url, { method: 'POST' });
 
         if (isArchivedView) {
           getArchivedNotes();
+          customAlert.showAlert('Catatan berhasil dipulihkan.');
         } else {
           getNotes();
+          customAlert.showAlert('Catatan berhasil diarsipkan.');
         }
 
       } catch (error) {
