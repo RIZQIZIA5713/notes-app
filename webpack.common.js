@@ -16,6 +16,15 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+
+      /* Image */
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name][ext]',
+        },
+      },
     ],
   },
 
@@ -25,6 +34,7 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
       scriptLoading: 'defer',
+      favicon: './src/assets/favicon.png',
     }),
 
     new MiniCssExtractPlugin({
